@@ -1,1 +1,10 @@
-<p>toolbar works!</p>
+<div style="width: 50px; height: 200px;">
+
+    <div *ngIf="this.isButtonOneVisible">
+        <button (click)="this.buttonOneClicked($event)">Button ONE</button>
+    </div>
+    <div *ngIf="this.isButtonTwoVisible">
+        <button (click)="this.buttonTwoClicked($event)">Button TWO</button>
+    </div>
+
+</div>

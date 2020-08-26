@@ -15,26 +15,32 @@ export class CustomComponent implements OnInit {
   @Input() 
   set ownerWindow (value: any) {
     this._ownerWindow = value;
-
     if(this._ownerWindow != null) {
       this._ownerWindow.loadCompleted(this);
     }
-
   }
   
   @Input() name: string = "";
 
-  constructor(private resolver: ComponentFactoryResolver) { }
+  constructor() { }
 
   ngOnInit(): void { }
 
-  getToolbarFactory(): ComponentFactory<any> {
+  getToolbarFactory(resolver: ComponentFactoryResolver): ComponentFactory<any> {
     // Create the toolbar component
-    const factory = this.resolver.resolveComponentFactory(ToolbarComponent);
+    const factory = resolver.resolveComponentFactory(ToolbarComponent);
     if (factory == null) {
         return null;
     }
     return factory;
+  }
+
+  get isButtonOneVisible() {
+    return Math.random() >= 0.5 // %50 probability of get "true"  
+  }
+
+  get isButtonTwoVisible() {
+    return Math.random() >= 0.5 // %50 probability of get "true"  
   }
 
 }

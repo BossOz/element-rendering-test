@@ -22,13 +22,13 @@ export class CustomComponent implements OnInit {
   
   @Input() name: string = "";
 
-  constructor() { }
+  constructor(private resolver: ComponentFactoryResolver) { }
 
   ngOnInit(): void { }
 
   getToolbarFactory(resolver: ComponentFactoryResolver): ComponentFactory<any> {
     // Create the toolbar component
-    const factory = resolver.resolveComponentFactory(ToolbarComponent);
+    const factory = this.resolver.resolveComponentFactory(ToolbarComponent);
     if (factory == null) {
         return null;
     }

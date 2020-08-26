@@ -65512,7 +65512,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 class CustomComponent {
-    constructor() {
+    constructor(resolver) {
+        this.resolver = resolver;
         this.name = "";
     }
     get ownerWindow() {
@@ -65527,7 +65528,7 @@ class CustomComponent {
     ngOnInit() { }
     getToolbarFactory(resolver) {
         // Create the toolbar component
-        const factory = resolver.resolveComponentFactory(_toolbar_toolbar_component__WEBPACK_IMPORTED_MODULE_1__["ToolbarComponent"]);
+        const factory = this.resolver.resolveComponentFactory(_toolbar_toolbar_component__WEBPACK_IMPORTED_MODULE_1__["ToolbarComponent"]);
         if (factory == null) {
             return null;
         }
@@ -65540,7 +65541,7 @@ class CustomComponent {
         return Math.random() >= 0.5; // %50 probability of get "true"  
     }
 }
-CustomComponent.ɵfac = function CustomComponent_Factory(t) { return new (t || CustomComponent)(); };
+CustomComponent.ɵfac = function CustomComponent_Factory(t) { return new (t || CustomComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"])); };
 CustomComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: CustomComponent, selectors: [["app-custom"]], inputs: { ownerWindow: "ownerWindow", name: "name" }, decls: 2, vars: 1, template: function CustomComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
@@ -65556,7 +65557,7 @@ CustomComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCo
                 templateUrl: './custom.component.html',
                 styleUrls: ['./custom.component.css']
             }]
-    }], function () { return []; }, { ownerWindow: [{
+    }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"] }]; }, { ownerWindow: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
         }], name: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
